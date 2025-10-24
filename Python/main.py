@@ -6,7 +6,7 @@ from os.path import join
 
 if __name__ == '__main__':
 
-    document = "circuit1.txt"
+    document = "circuit2.txt"
 
     game = True
     #testing for Github

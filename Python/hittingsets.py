@@ -1,4 +1,3 @@
-import dictionary as dct
 
 def run_hitting_set_algorithm(conflict_sets):
     """
@@ -10,17 +9,23 @@ def run_hitting_set_algorithm(conflict_sets):
 
     #--------------- here is what I wrote: ------------------
 
-    root_node = conflict_sets[0] #get the root node
-    stack = [] #create an empty stack
-    stack.append(root_node) #place the root node on the stack
-    print("the stack is:", stack)
+    #stack = [] #create an empty stack
+    visited_nodes = []
+
+    stack = conflict_sets.copy()
+    print("not visited nodes:", stack)
+
+    #root_node = conflict_sets[0]  # get the root node
+
+    print("the stack before popping is:", stack)
 
     while len(stack) > 0: #while the stack is not empty
-        stack.pop() #remove the rootnode
+        visited_nodes.append(stack[0]) #add the top node to the list of visited nodes
+        print("visited nodes is:", visited_nodes)
 
-        #next_node = conflict_sets[i]
+        stack.pop(0) #remove the top node from the stack
+        print("the stack after popping:", stack)
 
-        print("after popping the stack is", stack)
-
+        #set its label to a set S ∈ F not yet hit by the set of edge labels on the path from the root to this node, or to ✓ otherwise
 
     return None, None
