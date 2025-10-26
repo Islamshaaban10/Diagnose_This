@@ -8,6 +8,7 @@ def run_hitting_set_algorithm(conflict_sets):
     """
 
     #--------------- here is what I wrote: ------------------
+    
 
     #stack = [] #create an empty stack
     visited_nodes = []
@@ -28,4 +29,47 @@ def run_hitting_set_algorithm(conflict_sets):
 
         #set its label to a set S ∈ F not yet hit by the set of edge labels on the path from the root to this node, or to ✓ otherwise
 
-    return None, None
+        
+    #-------------------finding the hit set ----------------------
+    '''
+    for subset in conflict_sets :
+        for e in subset :
+        print (e)
+    '''
+
+    con_set = conflict_sets.copy()
+
+    def first_unhit (selection):
+            # return the frist conflict set not yet hit by ' selection' , else none 
+            for subset in con_set:
+                hit = False
+                for element in subset:
+                    if element in selection:
+                        hit = True
+                        break   # only stop checking this set
+                if not hit:
+                    return subset   # return first unhit set
+            return None         # all sets were hit
+
+
+    all_hits =[]
+    stack =[[]]      
+    counter =0
+    while stack:
+        counter = counter+1
+        path = stack.pop()
+        print (counter,"path =" ,path)
+        unhit = first_unhit(path)
+        print (counter,"unhit =" ,unhit)
+
+        if unhit is None: 
+            all_hits.append(path)
+            print (counter,"all_hits =" ,all_hits)
+            continue
+        for u in unhit :
+            if u not in path : 
+                stack.append(path+[u])
+                print (counter,"path+u =" ,stack)
+
+    return all_hits, None
+    #return None, None
