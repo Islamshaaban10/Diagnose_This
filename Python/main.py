@@ -8,8 +8,7 @@ if __name__ == '__main__':
 
     document = "circuit2.txt"
 
-    game = False
-    #testing for Github
+    game = True
 
     # It only makes sense to play the game if you have the hitting set algorithm implemented.
     if game:
