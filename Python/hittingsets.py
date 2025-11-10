@@ -8,15 +8,12 @@ def run_hitting_set_algorithm(conflict_sets):
     """
         
     #-------------------finding the hit set ----------------------
-    '''
-    for subset in conflict_sets :
-        for e in subset :
-        print (e)
-    '''
 
-    con_set = conflict_sets.copy()
-
-    def first_unhit(selection):
+    con_set = list (conflict_sets)
+    con_set_reversed = con_set.reverse()
+    print ("sorted" ,con_set_reversed)
+    
+    def Ishit(selection):
             # return the first conflict set not yet hit by ' selection' , else none
             for subset in con_set:
                 hit = False
@@ -38,7 +35,7 @@ def run_hitting_set_algorithm(conflict_sets):
         path = stack.pop()
         #print (counter, "path =", path)
 
-        unhit = first_unhit(path)
+        unhit = Ishit(path)
         #print (counter, "unhit =", unhit)
 
         if unhit is None: 

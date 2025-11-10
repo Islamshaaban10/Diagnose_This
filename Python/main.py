@@ -3,12 +3,13 @@ from guesscomponentsgame import choose_components, score_function
 from conflictsets import ConflictSetRetriever
 from hittingsets import run_hitting_set_algorithm
 from os.path import join
+import time 
 
 if __name__ == '__main__':
+    start_time = time.time()
+    document = "circuit3.txt"
 
-    document = "circuit2.txt"
-
-    game = True
+    game = False
 
     # It only makes sense to play the game if you have the hitting set algorithm implemented.
     if game:
@@ -37,3 +38,6 @@ if __name__ == '__main__':
     if game:
         score = score_function(conflict_sets, chosen_conflict_sets)
         print(f"Your score: {score:.2f}%")
+    end_time = time.time()
+    total_time = end_time-start_time
+    print( "start time : ", start_time,"end_time :", end_time,"total time :",total_time)
