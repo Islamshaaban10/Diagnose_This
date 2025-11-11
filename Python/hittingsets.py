@@ -8,14 +8,25 @@ def run_hitting_set_algorithm(conflict_sets):
     """
         
     #-------------------finding the hit set ----------------------
-    '''
-    for subset in conflict_sets :
-        for e in subset :
-        print (e)
-    '''
+    Heuristic =0
+    con_set = list (conflict_sets)
+    print("Heuristic = 0",con_set)
+    print('Enter Heuristic :')
+    Heuristic = int (input()  )
+    #-------------------Heuristics ---------------------------------
+    if Heuristic == 1:      # sort the conflict set with the small set frist
+        con_set = list (sorted(con_set, key=len))
+        print("Heuristic = 1",con_set)
+    elif Heuristic ==2:     # sort the conflict set with the Larg set frist
+        con_set = list (sorted(con_set, key=len,reverse= True))
+        print("Heuristic = 2",con_set)
+    elif Heuristic ==3:     # containing the most common elements
+        print("Heuristic = 3",con_set)
+       # for s in con_set :
+           # for e in s :
 
-    con_set = conflict_sets.copy()
-
+    
+#------------------- first_unhit ----------------------
     def first_unhit(selection):
             # return the first conflict set not yet hit by ' selection' , else none
             for subset in con_set:
