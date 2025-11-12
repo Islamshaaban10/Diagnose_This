@@ -19,8 +19,7 @@ def plot_circuit(document):
         plot_circuit_6()
     elif document == 'circuit7.txt':
         plot_circuit_7()
-
-    elif document == 'test_circuit8.txt':
+    elif document == 'circuit8.txt':
         plot_circuit_8()
 
     else:

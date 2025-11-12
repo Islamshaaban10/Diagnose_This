@@ -7,8 +7,7 @@ import time
 
 if __name__ == '__main__':
     start_time = time.time()
-    #document = "circuit3.txt"
-    document = "test_circuit8.txt"
+    document = "circuit2.txt"
 
     game = True
 
