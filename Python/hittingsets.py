@@ -23,7 +23,22 @@ def run_hitting_set_algorithm(conflict_sets):
         print("Heuristic = 2", con_set)
     elif Heuristic == 3:     # containing the most common elements
         print("Heuristic = 3", conflict_sets_list)
-
+        element_dic ={}
+        for subset in conflict_sets_list : #create dictionary with element counts 
+            for e in subset:
+                if e in element_dic:
+                    element_dic[e] += 1
+                else:
+                    element_dic[e] = 1
+        weights = [] # get the element Weight for the supset
+        for s in conflict_sets_list :
+            weight=0
+            for e in s:
+                weight = element_dic[e]+1
+            weights.append ((s,weight))
+        conflict_sets_list = sorted(weights,key=lambda x: x[1],reverse=True)
+        print("Heuristic = 3", conflict_sets_list)
+        
     def first_unhit_set(selection):
         # return the first conflict set not yet hit by 'selection', if all sets are hit return none
         for subset in conflict_sets_list:
