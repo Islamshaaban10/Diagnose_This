@@ -7,8 +7,8 @@ import time
 
 if __name__ == '__main__':
     start_time = time.time()
-    proces_time = time.process_time()
-    document = "circuit7.txt"
+    start_proces_time = time.process_time()
+    document = "circuit1.txt"
 
     game = False
 
@@ -40,8 +40,10 @@ if __name__ == '__main__':
         score = score_function(conflict_sets, chosen_conflict_sets)
         print(f"Your score: {score:.2f}%")
 
-    # printing the timestamps
+    # printing the timestamps and the process time
     end_time = time.time()
-    total_time = end_time-start_time
-    print(f'start time: {start_time:.2f}, end time: {end_time:.2f}, total literal elapsed time: {total_time:.2f}seconds')
-    print("proces time:", proces_time)
+    end_process_time = time.process_time()
+    total_literal_time = end_time-start_time
+    total_process_time = end_process_time-start_proces_time
+    print(f'start time: {start_time:.2f}, end time: {end_time:.2f}, total literal elapsed time: {total_literal_time:.2f}seconds')
+    print(f'start process time: {start_time:.2f}, end process time: {end_time:.2f}, total process time: {total_process_time:.2f}seconds')
