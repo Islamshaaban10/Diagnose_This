@@ -7,7 +7,7 @@ import time
 
 if __name__ == '__main__':
     start_time = time.time()
-    document = "circuit2.txt"
+    document = "circuit9.txt"
 
     game = True
 
@@ -40,4 +40,4 @@ if __name__ == '__main__':
         print(f"Your score: {score:.2f}%")
     end_time = time.time()
     total_time = end_time-start_time
-    print( "start time : ", start_time,"end_time :", end_time,"total time :",total_time)
+    print("start time : ", start_time, "end_time :", end_time, "total time :", total_time)

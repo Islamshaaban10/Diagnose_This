@@ -8,43 +8,42 @@ def run_hitting_set_algorithm(conflict_sets):
              min_hitting_sets_list: list of minimal hitting sets as a list
     """
 
-    Heuristic = 0
     conflict_sets_list = list(conflict_sets)
 
     print("Heuristic = 0", conflict_sets_list)
     print('Enter Heuristic :')
-    Heuristic = int(input())
+    heuristic = int(input())
     
-    if Heuristic == 1:      # sort the conflict set with the smallest set first
+    if heuristic == 1:      # sort the conflict set with the smallest set first
         con_set = list(sorted(conflict_sets_list, key=len))
         print("Heuristic = 1", con_set)
-    elif Heuristic ==2:     # sort the conflict set with the Largest set first
+    elif heuristic ==2:     # sort the conflict set with the Largest set first
         con_set = list(sorted(conflict_sets_list, key=len, reverse=True))
         print("Heuristic = 2", con_set)
-    elif Heuristic == 3:     # containing the most common elements
+    elif heuristic == 3:     # containing the most common elements
         print("Heuristic = 3", conflict_sets_list)
-        element_dic ={}
-        for subset in conflict_sets_list : #create dictionary with element counts 
+        element_dic = {}
+        for subset in conflict_sets_list:   # create dictionary with element counts
             for e in subset:
                 if e in element_dic:
                     element_dic[e] += 1
                 else:
                     element_dic[e] = 1
-        weights = [] # get the element Weight for the supset
-        for s in conflict_sets_list :
-            weight=0
+        weights = []    # get the element Weight for the supset
+        for s in conflict_sets_list:
+            weight = 0
             for e in s:
                 weight = element_dic[e]+1
-            weights.append ((s,weight))
-        conflict_sets_list = sorted(weights,key=lambda x: x[1],reverse=True)
+            weights.append((s, weight))
+        conflict_sets_list = sorted(weights, key=lambda x: x[1], reverse=True)
         print("Heuristic = 3", conflict_sets_list)
         
     def first_unhit_set(selection):
         # return the first conflict set not yet hit by 'selection', if all sets are hit return none
         for subset in conflict_sets_list:
             hit = False
-            for item in subset:
-                if item in selection:
+            for element in subset:
+                if element in selection:
                     hit = True
                     break   # only stop checking this set
             if not hit:
