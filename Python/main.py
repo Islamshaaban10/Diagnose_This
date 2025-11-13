@@ -38,6 +38,8 @@ if __name__ == '__main__':
     if game:
         score = score_function(conflict_sets, chosen_conflict_sets)
         print(f"Your score: {score:.2f}%")
+
     end_time = time.time()
     total_time = end_time-start_time
-    print("start time : ", start_time, "end_time :", end_time, "total time :", total_time)
+
+    print(f'start time: {start_time:.2f}, end time: {end_time:.2f}, total elapsed time: {total_time:.2f}seconds')
