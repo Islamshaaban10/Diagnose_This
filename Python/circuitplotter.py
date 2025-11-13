@@ -317,3 +317,4 @@ def plot_circuit_9():
         d.add(elm.Dot().at(o1.out).label('0', loc='right'))
 
     webbrowser.open('.circuit.svg')
+

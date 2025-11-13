@@ -14,10 +14,10 @@ def run_hitting_set_algorithm(conflict_sets):
     print('Enter Heuristic :')
     heuristic = int(input())
     
-    if heuristic == 1:      # sort the conflict set with the smallest set first
+    if heuristic == 1:      # sort the conflict sets with the smallest set first
         con_set = list(sorted(conflict_sets_list, key=len))
         print("Heuristic = 1", con_set)
-    elif heuristic ==2:     # sort the conflict set with the Largest set first
+    elif heuristic == 2:     # sort the conflict sets with the Largest set first
         con_set = list(sorted(conflict_sets_list, key=len, reverse=True))
         print("Heuristic = 2", con_set)
     elif heuristic == 3:     # containing the most common elements
@@ -78,8 +78,8 @@ def run_hitting_set_algorithm(conflict_sets):
 
     for hit_set in hitting_sets:
         for hit_set_compare in hitting_sets:
-            if hit_set_compare != hit_set and hit_set.issuperset(hit_set_compare):
-                min_hitting_sets.remove(hit_set)
+            if hit_set_compare != hit_set and hit_set.issuperset(hit_set_compare):  # checking if the hitting set is a superset and ensuring it is not compared to itself
+                min_hitting_sets.remove(hit_set)    # filtering out the supersets
 
     min_hitting_sets_list = [list(sets) for sets in min_hitting_sets]   # converting the sets back to lists
 
