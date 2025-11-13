@@ -8,9 +8,9 @@ import time
 if __name__ == '__main__':
     start_time = time.time()
     proces_time = time.process_time()
-    document = "circuit9.txt"
+    document = "circuit7.txt"
 
-    game = True
+    game = False
 
     # It only makes sense to play the game if you have the hitting set algorithm implemented.
     if game:

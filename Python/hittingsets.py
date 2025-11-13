@@ -7,14 +7,16 @@ def run_hitting_set_algorithm(conflict_sets):
     :return: hit_sets_list: list of hitting sets as a list
              min_hitting_sets_list: list of minimal hitting sets as a list
     """
-
+    con_set = []
     conflict_sets_list = list(conflict_sets)
 
-    print("Heuristic = 0", conflict_sets_list)
+   
     print('Enter Heuristic :')
     heuristic = int(input())
-    
-    if heuristic == 1:      # sort the conflict sets with the smallest set first
+    if heuristic == 0:
+        con_set = conflict_sets_list
+        print("Heuristic = 0", conflict_sets_list)
+    elif heuristic == 1:      # sort the conflict sets with the smallest set first
         con_set = list(sorted(conflict_sets_list, key=len))
         print("Heuristic = 1", con_set)
     elif heuristic == 2:     # sort the conflict sets with the Largest set first
@@ -35,12 +37,17 @@ def run_hitting_set_algorithm(conflict_sets):
             for e in s:
                 weight = element_dic[e]+1
             weights.append((s, weight))
-        conflict_sets_list = sorted(weights, key=lambda x: x[1], reverse=True)
-        print("Heuristic = 3", conflict_sets_list)
-        
+        Test_List =[]
+        Rest_List2= []
+        Test_List = sorted(weights, key=lambda x: x[1], reverse=True)
+        print("Test_List = ", Test_List)
+        for s,w in Test_List:
+           con_set.append(s)
+        print("Test_List2 = ", con_set)
+
     def first_unhit_set(selection):
         # return the first conflict set not yet hit by 'selection', if all sets are hit return none
-        for subset in conflict_sets_list:
+        for subset in con_set:
             hit = False
             for element in subset:
                 if element in selection:
@@ -55,7 +62,7 @@ def run_hitting_set_algorithm(conflict_sets):
     counter = 0
 
     while stack:
-        counter = counter + 1
+        counter += 1
         path = stack.pop()
         print(counter, "path =", path)
 
