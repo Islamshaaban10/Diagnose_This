@@ -294,27 +294,58 @@ def plot_circuit_9():
         # Components (2 XORs, 2 ANDs, 1 OR)
         x1 = d.add(logic.Xor(inputs=2).label('X1').at((0, 4)))
         x2 = d.add(logic.Xor(inputs=2).label('X2').at((0, 0)))
+        x3 = d.add(logic.Xor(inputs=2).label('X3').at((4, 2)))
+        x4 = d.add(logic.Xor(inputs=2).label('X4').at((8, 4)))
+        x5 = d.add(logic.Xor(inputs=2).label('X5').at((8, 0)))
+
+        x6 = d.add(logic.Xor(inputs=2).label('X6').at((10, 3)))
+        x7 = d.add(logic.Xor(inputs=2).label('X7').at((10, 1)))
+        x8 = d.add(logic.Xor(inputs=2).label('X8').at((12, 2)))
+
         a1 = d.add(logic.And(inputs=2).label('A1').at((0, 2)))
         a2 = d.add(logic.And(inputs=2).label('A2').at((2, 3)))
+        a3 = d.add(logic.And(inputs=2).label('A3').at((6, 1)))
+        a4 = d.add(logic.And(inputs=2).label('A4').at((8, 2)))
         o1 = d.add(logic.Or(inputs=2).label('O1').at((2, 1)))
+        o2 = d.add(logic.Or(inputs=2).label('O2').at((6, 3)))
 
         # Behaviour connections
         d.add(elm.Line().at(x1.out).to(a2.in1))
         d.add(elm.Line().at(a1.out).to(a2.in2))
         d.add(elm.Line().at(a1.out).to(o1.in1))
         d.add(elm.Line().at(x2.out).to(o1.in2))
+        d.add(elm.Line().at(x3.out).to(o2.in2))
+        d.add(elm.Line().at(x3.out).to(a3.in1))
+        d.add(elm.Line().at(o2.out).to(x4.in2))
+        d.add(elm.Line().at(o2.out).to(a4.in1))
+        d.add(elm.Line().at(a3.out).to(a4.in2))
+        d.add(elm.Line().at(a3.out).to(x5.in1))
+        d.add(elm.Line().at(a2.out).to(x3.in1))
+        d.add(elm.Line().at(o1.out).to(x3.in2))
+
+        d.add(elm.Line().at(x4.out).to(x6.in1))
+        d.add(elm.Line().at(a4.out).to(x6.in2))
+        d.add(elm.Line().at(a4.out).to(x7.in1))
+        d.add(elm.Line().at(x5.out).to(x7.in2))
+
+        d.add(elm.Line().at(x6.out).to(x8.in1))
+        d.add(elm.Line().at(x7.out).to(x8.in2))
+
 
         # Input annotations
         d.add(elm.Dot().at(x1.in1).label('0', loc='left'))
         d.add(elm.Dot().at(x1.in2).label('1', loc='left'))
         d.add(elm.Dot().at(x2.in1).label('0', loc='left'))
         d.add(elm.Dot().at(x2.in2).label('1', loc='left'))
+        d.add(elm.Dot().at(x4.in1).label('1', loc='left'))
+        d.add(elm.Dot().at(x5.in2).label('1', loc='left'))
+        d.add(elm.Dot().at(o2.in1).label('1', loc='left'))
         d.add(elm.Dot().at(a1.in1).label('1', loc='left'))
         d.add(elm.Dot().at(a1.in2).label('1', loc='left'))
+        d.add(elm.Dot().at(a3.in2).label('1', loc='left'))
 
         # Output observations
-        d.add(elm.Dot().at(a2.out).label('0', loc='right'))
-        d.add(elm.Dot().at(o1.out).label('0', loc='right'))
+        d.add(elm.Dot().at(x8.out).label('1', loc='right'))
 
     webbrowser.open('.circuit.svg')
 
